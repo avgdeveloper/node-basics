@@ -23,8 +23,8 @@ async function createPdf(doc) {
         headers: ['Country', 'Capital', 'Population'],
         rows: countries.map(c => [
             c.name.common,
-            c.capital,
-            String(c.population)
+            c.capital?.[0] || '',
+            c.population.toLocaleString()
         ]),
     }
 

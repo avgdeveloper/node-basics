@@ -13,8 +13,7 @@ function sumFromFile(filePath) {
 
             const sum = data
                 .split(/\r?\n/)
-                .map(Number)
-                .reduce((acc, num) => acc + num, 0)
+                .reduce((acc, num) => acc + (+num), 0)
 
             resolve(sum)
         })
