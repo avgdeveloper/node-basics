@@ -1,3 +1,4 @@
+import fs from 'fs'
 import { utilService } from './services/util.service.js'
 
 downloadCountryFlags()
@@ -26,6 +27,11 @@ function getCountries() {
 }
 
 function downloadFlags(countries) {
+    const flagDir = "./flags"
+    if (!fs.existsSync(flagDir)) {
+        fs.mkdirSync(flagDir)
+    }
+
     const prms = countries.map(country => {
         return utilService.download(
             country.flags.png,
